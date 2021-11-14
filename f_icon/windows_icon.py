@@ -48,6 +48,9 @@ class IconCreator:
         if os.path.splitext(input_file.lower())[1] == ".txt":
             with open(input_file, "r", encoding="UTF-8") as file:
                 while line := file.readline().rstrip():
+                    if not os.path.exists(line):
+                        continue
+                    # we are skipping a line if file is not found
                     folder = str(Path(line).parent)
                     if (
                         placement != ""

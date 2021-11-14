@@ -32,7 +32,11 @@ class IconCreator:
         if os.path.splitext(input_file.lower())[1] == ".txt":
             with open(input_file, "r", encoding="UTF-8") as file:
                 while line := file.readline().rstrip():
-                    self._create_mac_icons(line, str(Path(line).parent))
+                    # print('*'+line+'*')
+                    # print(os.stat(line))
+                    # print(os.path.exists(line))
+                    if os.path.exists(line):
+                        self._create_mac_icons(line, str(Path(line).parent))
         else:
             if folder == "":
                 folder = str(Path(input_file).parent)

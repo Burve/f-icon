@@ -90,16 +90,21 @@ def main():
             "and it gets ignored if the drive for both locations is different.",
         )
 
-        parser.add_argument(
-            "-v",
-            "--verbose",
-            action="store_true",
-            help="Display any debug information",
-        )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Display any debug information",
+    )
 
     args = parser.parse_args()
+    if platform.system() == "Windows":
+        create_icon(args.input, args.folder, args.placement, args.relative, args.verbose)
+    elif platform.system() == "Darwin":
+        create_icon(args.input, args.folder, '', False, args.verbose)
+    else:
+        print("Linux is not supported at this time :(")
 
-    create_icon(args.input, args.folder, args.placement, args.relative, args.verbose)
 
 
 if __name__ == "__main__":
