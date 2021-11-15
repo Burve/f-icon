@@ -6,6 +6,7 @@ setup(
     name='f-icon',
     version='0.0.1',
     author='Burve',
+    author_email='aleksandrs.ivancenko@gmail.com',
     url='https://github.com/Burve/f-icon',
     description='Set image as an icon of the target folder',
     long_description=LONG_DESCRIPTION,
