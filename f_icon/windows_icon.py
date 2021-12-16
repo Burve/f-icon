@@ -87,7 +87,7 @@ class IconCreator:
         # Getting the bigger side of the image
         s = max(img.shape[0:2])
 
-        if img.shape[2] != 4:  # add transp;arency layer, if we do not have one
+        if img.shape[2] != 4:  # add transparency layer, if we do not have one
             # editing input image to have alpha channel
             alpha = np.full((img.shape[0], img.shape[1]), 255, dtype=np.uint8)
             img = np.dstack((img, alpha))
