@@ -4,7 +4,7 @@ LONG_DESCRIPTION = open('README.md', 'r', encoding='utf-8').read()
 
 setup(
     name='f-icon',
-    version='0.0.1',
+    version='0.0.2',
     author='Burve',
     author_email='aleksandrs.ivancenko@gmail.com',
     url='https://github.com/Burve/f-icon',
@@ -16,7 +16,7 @@ setup(
     install_requires=[
         "Pillow >= 8.4.0",
         "numpy >= 1.20.1",
-        "opencv_python >= 4.5.4.58"
+        "opencv_python >= 4.5.4.56"
     ],
     extras_require={
       'platform_system=="Darwin"': [

@@ -10,6 +10,7 @@ from PIL import Image
 import cv2  # opencv-python
 
 
+
 class IconCreator:
     """
     Create icon for windows folder
@@ -81,14 +82,15 @@ class IconCreator:
         :return:
         """
         # Reading an image (you can use PNG or JPG)
-        img = cv2.imread(image)
+        img = cv2.imread(image, cv2.IMREAD_UNCHANGED)
 
         # Getting the bigger side of the image
         s = max(img.shape[0:2])
 
-        # editing input image top have alpha channel
-        alpha = np.full((img.shape[0], img.shape[1]), 255, dtype=np.uint8)
-        img = np.dstack((img, alpha))
+        if img.shape[2] != 4:  # add transp;arency layer, if we do not have one
+            # editing input image to have alpha channel
+            alpha = np.full((img.shape[0], img.shape[1]), 255, dtype=np.uint8)
+            img = np.dstack((img, alpha))
 
         # Creating a dark square with NUMPY
         f = np.zeros((s, s, 4), np.uint8)
