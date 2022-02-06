@@ -4,7 +4,7 @@ LONG_DESCRIPTION = open('README.md', 'r', encoding='utf-8').read()
 
 setup(
     name='f-icon',
-    version='0.0.2',
+    version='0.0.3',
     author='Burve',
     author_email='aleksandrs.ivancenko@gmail.com',
     url='https://github.com/Burve/f-icon',
