@@ -53,7 +53,8 @@ class IconCreator:
         :return:
         """
         # Reading an image (you can use PNG or JPG)
-        img = cv2.imread(image, cv2.IMREAD_UNCHANGED)
+        # img = cv2.imread(image, cv2.IMREAD_UNCHANGED)
+        img = cv2.imdecode(np.fromfile(image, dtype=np.uint8), cv2.IMREAD_UNCHANGED)
 
         # Getting the bigger side of the image
         s = max(img.shape[0:2])
@@ -79,7 +80,10 @@ class IconCreator:
 
         # Saving the image
         temp_file = folder + os.sep + "_temp_.png"
-        cv2.imwrite(temp_file, f)
+        # cv2.imwrite(temp_file, f)
+        is_success, im_buf_arr = cv2.imencode(".png", f)
+        im_buf_arr.tofile(temp_file)
+
         # cv2.destroyAllWindows()
 
         Cocoa.NSWorkspace.sharedWorkspace().setIcon_forFile_options_(

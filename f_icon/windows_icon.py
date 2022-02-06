@@ -5,6 +5,8 @@ import time
 from pathlib import Path
 from subprocess import run
 from configparser import ConfigParser
+
+import numpy
 import numpy as np
 from PIL import Image
 import cv2  # opencv-python
@@ -82,7 +84,8 @@ class IconCreator:
         :return:
         """
         # Reading an image (you can use PNG or JPG)
-        img = cv2.imread(image, cv2.IMREAD_UNCHANGED)
+        # img = cv2.imread(image, cv2.IMREAD_UNCHANGED)
+        img = cv2.imdecode(np.fromfile(image, dtype=np.uint8), cv2.IMREAD_UNCHANGED)
 
         # Getting the bigger side of the image
         s = max(img.shape[0:2])
@@ -116,7 +119,9 @@ class IconCreator:
 
         # Saving the image
         temp_file = self._append_date(placement_path + os.sep + "_temp_.png")
-        cv2.imwrite(temp_file, f)
+        # cv2.imwrite(temp_file, f)
+        is_success, im_buf_arr = cv2.imencode(".png", f)
+        im_buf_arr.tofile(temp_file)
 
         # now resizing image
 
